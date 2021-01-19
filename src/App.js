@@ -13,8 +13,10 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <Tablero board={board} />
+    <div className="container">
+      <div className= "board-container">
+        <Tablero board={board} />
+      </div>
     </div>
   );
 }

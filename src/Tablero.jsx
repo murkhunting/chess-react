@@ -1,11 +1,12 @@
 import React from 'react'
+import Cuadrante from "./Cuadrante"
 
 export default function Tablero({board}) {
     return (
         <div className="board">
-            {board.map((piece, i) => (
-                <div key={i}>
-                    <p>{JSON.stringify(piece)}</p>
+            {board.flat().map((piece, i) => (
+                <div key={i} className="space">
+                    <Cuadrante piece={piece} />
                 </div> 
             ))}
         </div>
