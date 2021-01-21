@@ -7,3 +7,11 @@ const chess = new Chess()
 export const gameSubject = new BehaviorSubject({
     board: chess.board()
 })
+
+//function to move a piece that takes the initial location (from) and the final (to)
+export function move(from, to) {
+   const legalMove = chess.move({from, to})
+   if(legalMove) {
+       gameSubject.next({board: chess.board()})
+   }
+}

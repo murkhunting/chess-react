@@ -1,7 +1,6 @@
 * {
   margin:0;
   padding:0;
-  color: white;
 }
 
 .board {
@@ -27,4 +26,31 @@
 .space {
   width: 12.5%;
   height: 12.5%;
+}
+
+.space-black{
+  background:rgb(52, 95, 53)
+}
+
+.space-white{
+  background: rgb(235, 235, 235);
+}
+
+.board-space{
+  width: 100%;
+  height: 100%;
+}
+
+.piece-container{
+  cursor: grab;
+  width: 100%;
+  height: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.piece{
+  max-width: 120%;
+  max-height: 120%;
 }
