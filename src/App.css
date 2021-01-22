@@ -21,11 +21,18 @@
 .board-container {
   width: 600px;
   height: 600px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .space {
   width: 12.5%;
   height: 12.5%;
+}
+
+.promote-space{
+  width: 50%;
+  height: 50%;
 }
 
 .space-black{
@@ -53,4 +60,24 @@
 .piece{
   max-width: 120%;
   max-height: 120%;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.text{
+  text-orientation:upright;
+  writing-mode: vertical-lr;
+  font-family: sans-serif;
+  padding: 10px;
+  color: white;
+}
+
+.text button {
+  margin-top: 20px;
+  cursor: pointer;
+  background: rgb(52, 95, 53);
+  border: 2px solid white;
+  border-radius: 10px;
 }

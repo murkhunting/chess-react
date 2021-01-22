@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import {useDrop} from "react-dnd"
 import Space from "./Space"
 import Piece from "./Piece"
-import {useDrop} from "react-dnd"
-import {move} from "./Game"
+import Promotion from "./Promotion"
+import {handleMove} from "./Game"
+import {gameSubject} from "./Game"
 
 export default function Cuadrante({piece, black, position}) {
+    const [promotion, setPromotion] = useState (null)
     const [ , drop] = useDrop({
         //same type we put in the piece item: "piece"
         accept: "piece",
@@ -13,13 +16,25 @@ export default function Cuadrante({piece, black, position}) {
         //the "from" we take it from the id of the piece
         drop: (item) => {
             const [fromPosition] = item.id.split("_", 1)
-            move(fromPosition, position)
+            handleMove(fromPosition, position)
         },
     })
+    useEffect(() => {
+        const subscribe = gameSubject.subscribe(({pendingPromotion}) => 
+            pendingPromotion && pendingPromotion.to === position 
+            ? setPromotion(pendingPromotion) 
+            : setPromotion(null)
+        )
+        return () => subscribe.unsubscribe()
+    }, [position])
     return (
         <div className="board-space" ref={drop}>
             <Space black={black}>
-               {piece && <Piece piece={piece} position={position}/>}
+                {promotion ? (
+                    <Promotion promotion={promotion} /> 
+                ) : piece ? (
+                    <Piece piece={piece} position={position}/>
+                ) : null}                   
             </Space>
         </div>
     )
